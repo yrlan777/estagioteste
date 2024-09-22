@@ -1,0 +1,23 @@
+# Função para verificar se o número pertence à sequência de Fibonacci
+def pertence_fibonacci_input():
+    # Recebendo entrada do usuário
+    n = int(input("Informe um número: "))
+
+    # Iniciando a sequência com os primeiros dois números
+    a, b = 0, 1
+    fibonacci_sequence = [a, b]
+
+    # Gerando a sequência de Fibonacci até o número informado ou até ultrapassá-lo
+    while b < n:
+        a, b = b, a + b
+        fibonacci_sequence.append(b)
+
+    # Verificando se o número informado pertence à sequência
+    if n in fibonacci_sequence:
+        return f"O número {n} pertence à sequência de Fibonacci."
+    else:
+        return f"O número {n} NÃO pertence à sequência de Fibonacci."
+
+# Chamando a função
+resultado = pertence_fibonacci_input()
+print(resultado)
