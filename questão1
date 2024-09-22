@@ -1,0 +1,10 @@
+# separando em partes, aqui temos 3 variaveis int:
+int INDICE = 13, SOMA = 0, K = 0;
+
+# aqui se inicia um loop onde no inicio do loop K=0, e a cada iteração K aukmenta em 1 e esse valor é adiconado a variavel SOMA
+Enquanto K < INDICE faça {
+    K = K + 1;
+    SOMA = SOMA + K;
+}
+
+# resulatando assim que o final do loop, quando K atinge o valor 13, a variável SOMA será 91.
