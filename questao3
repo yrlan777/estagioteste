@@ -1,0 +1,38 @@
+import json
+
+# Função para calcular os extremos de valor de faturamento e os dias acima da média
+def calcular_faturamento(caminho_arquivo_json):
+    # Carrega os dados do JSON
+    with open(caminho_arquivo_json, 'r') as file:
+        dados = json.load(file)
+    
+    # Extraindo os valores de faturamento, ignorando dias com valor igual a zero (0)
+    faturamento = [dia['valor'] for dia in dados['faturamento_diario'] if dia['valor'] > 0]
+    
+    if not faturamento:
+        return "Não há dados de faturamento para análise."
+    
+    # Calcula o menor e o maior valor de faturamento
+    menor_valor = min(faturamento)
+    maior_valor = max(faturamento)
+    
+    # Calcula a média de faturamento
+    media_faturamento = sum(faturamento) / len(faturamento)
+    
+    # Conta o número de dias com faturamento superior à média
+    dias_acima_media = len([valor for valor in faturamento if valor > media_faturamento])
+    
+    # Retorna os resultados
+    return {
+        "menor_valor": menor_valor,
+        "maior_valor": maior_valor,
+        "dias_acima_media": dias_acima_media
+    }
+
+# Exemplo de uso
+caminho_arquivo_json = 'faturamento.json'
+resultado = calcular_faturamento(caminho_arquivo_json)
+
+print(f"Menor valor de faturamento: R${resultado['menor_valor']:.2f}")
+print(f"Maior valor de faturamento: R${resultado['maior_valor']:.2f}")
+print(f"Número de dias com faturamento acima da média: {resultado['dias_acima_media']}")
