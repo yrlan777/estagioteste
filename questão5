@@ -1,0 +1,14 @@
+# Função que inverte a string que o usuário inserir
+def inverter_string():
+    # inserir a string
+    texto = input("Digite uma string: ")
+    
+    # Invertendo a string
+    texto_invertido = texto[::-1]
+    
+    # e retornando a string invertida
+    return f"A string invertida é: {texto_invertido}"
+
+# Chamando a função
+resultado = inverter_string()
+print(resultado)
